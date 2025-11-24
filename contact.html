@@ -401,98 +401,119 @@
             document.getElementById('summary-timeline').textContent = timeline;
         }
 
+        // Contact Form Handler
+        class ContactForm {
+            constructor() {
+                this.form = document.getElementById('orderForm');
+                if (this.form) this.init();
+            }
+
+            init() {
+                this.form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    await this.handleSubmit();
+                });
+            }
+
+            async handleSubmit() {
+                const formData = new FormData(this.form);
+                const data = Object.fromEntries(formData);
+                const button = this.form.querySelector('button[type="submit"]');
+                const originalText = button.textContent;
+
+                try {
+                    // Show loading state
+                    button.textContent = 'PROCESSING...';
+                    button.disabled = true;
+
+                    // Use relative path for production - this works on Render
+                    const API_BASE = '/api';
+
+                    console.log('📤 Sending quote request:', data);
+
+                    const response = await fetch(`${API_BASE}/contact/submit`, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+                    console.log('📥 Server response:', result);
+
+                    if (result.success) {
+                        // Success state
+                        button.textContent = 'QUOTE REQUESTED! ✓';
+                        button.style.background = '#10B981';
+                        
+                        // Show success message
+                        this.showMessage('✅ Quote request submitted successfully! We will contact you within 24 hours.', 'success');
+                        
+                        // Reset form after 3 seconds
+                        setTimeout(() => {
+                            this.form.reset();
+                            button.textContent = originalText;
+                            button.disabled = false;
+                            button.style.background = '';
+                            updateOrderSummary(); // Reset summary
+                        }, 3000);
+                    } else {
+                        throw new Error(result.message);
+                    }
+                } catch (error) {
+                    console.error('❌ Quote request error:', error);
+                    button.textContent = 'FAILED - TRY AGAIN';
+                    button.style.background = '#EF4444';
+                    this.showMessage('❌ Failed to submit quote request. Please try again.', 'error');
+                    
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.disabled = false;
+                        button.style.background = '';
+                    }, 3000);
+                }
+            }
+
+            showMessage(text, type) {
+                // Remove existing messages
+                const existingMessage = document.querySelector('.form-message');
+                if (existingMessage) existingMessage.remove();
+
+                // Create new message
+                const message = document.createElement('div');
+                message.className = `form-message mt-4 p-4 rounded-lg ${
+                    type === 'success' ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-red-100 text-red-800 border border-red-300'
+                }`;
+                message.textContent = text;
+                
+                this.form.appendChild(message);
+
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    message.remove();
+                }, 5000);
+            }
+        }
+
         // Add event listeners for real-time updates
         document.addEventListener('DOMContentLoaded', function() {
             // Update summary when form changes
             const formElements = ['service-type', 'material-type', 'project-size', 'quantity'];
             formElements.forEach(id => {
-                document.getElementById(id).addEventListener('change', updateOrderSummary);
-                document.getElementById(id).addEventListener('input', updateOrderSummary);
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('change', updateOrderSummary);
+                    element.addEventListener('input', updateOrderSummary);
+                }
             });
 
+            // Initialize form handler
+            new ContactForm();
+            
             // Initialize summary
             updateOrderSummary();
         });
-
-        // Form submission with backend integration
-        document.getElementById('orderForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            const button = this.querySelector('button[type="submit"]');
-            const originalText = button.textContent;
-
-            try {
-                // Show loading state
-                button.textContent = 'PROCESSING...';
-                button.disabled = true;
-
-                // Use localhost for development
-                const API_BASE = 'http://localhost:3000/api';
-
-                const response = await fetch(`${API_BASE}/contact/submit`, {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    // Success state
-                    button.textContent = 'QUOTE REQUESTED! ✓';
-                    button.style.background = '#10B981';
-                    
-                    // Show success message
-                    showMessage('✅ Quote request submitted successfully! We will contact you within 24 hours.', 'success');
-                    
-                    // Reset form after 3 seconds
-                    setTimeout(() => {
-                        this.reset();
-                        button.textContent = originalText;
-                        button.disabled = false;
-                        button.style.background = '';
-                        updateOrderSummary(); // Reset summary
-                    }, 3000);
-                } else {
-                    throw new Error(result.message);
-                }
-            } catch (error) {
-                console.error('Quote request error:', error);
-                button.textContent = 'FAILED - TRY AGAIN';
-                button.style.background = '#EF4444';
-                showMessage('❌ Failed to submit quote request. Please try again.', 'error');
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.disabled = false;
-                    button.style.background = '';
-                }, 3000);
-            }
-        });
-
-        function showMessage(text, type) {
-            // Remove existing messages
-            const existingMessage = document.querySelector('.form-message');
-            if (existingMessage) existingMessage.remove();
-
-            // Create new message
-            const message = document.createElement('div');
-            message.className = `form-message mt-4 p-4 rounded-lg ${
-                type === 'success' ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-red-100 text-red-800 border border-red-300'
-            }`;
-            message.textContent = text;
-            
-            document.getElementById('orderForm').appendChild(message);
-
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                message.remove();
-            }, 5000);
-        }
 
         // Add click effects to contact items
         document.querySelectorAll('.contact-item').forEach(item => {

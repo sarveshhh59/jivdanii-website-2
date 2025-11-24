@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Quote | JIVDANII PRINTING PROCESS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .pulse-phone {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover .contact-icon {
+            transform: scale(1.2) rotate(5deg);
+            background: #1f2937 !important;
+        }
+        
+        .order-summary {
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: #374151 !important;
+        }
+    </style>
+</head>
+<body class="bg-white font-inter">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50" data-aos="fade-down">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-black text-gray-900 tracking-tight hover-lift inline-block">JIVDANII</a>
+                </div>
+                <div class="flex space-x-8 items-center">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-900 font-medium transition duration-300">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-gray-900 font-medium transition duration-300">About</a>
+                    <a href="contact.html" class="text-gray-900 font-medium border-b-2 border-gray-800 transition duration-300">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="bg-gradient-to-br from-gray-50 to-gray-100 py-20 text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-6" data-aos="fade-up">Get Your Quote</h1>
+            <p class="text-xl text-gray-600" data-aos="fade-up" data-aos-delay="200">Request a custom quote for your metal printing project</p>
+            
+            <!-- Animated dots -->
+            <div class="flex justify-center space-x-2 mt-8" data-aos="fade-up" data-aos-delay="400">
+                <div class="w-2 h-2 bg-gray-800 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                <div class="w-2 h-2 bg-gray-800 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                <div class="w-2 h-2 bg-gray-800 rounded-full animate-bounce" style="animation-delay: 0.3s"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                <!-- Order Form -->
+                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200 hover-lift" data-aos="fade-right">
+                    <h2 class="text-2xl font-black text-gray-900 mb-6">Project Details</h2>
+                    <form class="space-y-6" id="orderForm">
+                        <!-- Contact Information -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h3 class="text-lg font-bold text-gray-900 mb-4">Contact Information</h3>
+                            <div class="space-y-4">
+                                <div data-aos="fade-right" data-aos-delay="100">
+                                    <label for="contact-name" class="block text-gray-700 font-medium mb-2">Your Name *</label>
+                                    <input id="contact-name" name="name" type="text" placeholder="Your full name" required
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent form-input transition duration-300" />
+                                </div>
+                                <div data-aos="fade-right" data-aos-delay="150">
+                                    <label for="contact-email" class="block text-gray-700 font-medium mb-2">Email Address *</label>
+                                    <input id="contact-email" name="email" type="email" placeholder="you@example.com" required
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent form-input transition duration-300" />
+                                </div>
+                                <div data-aos="fade-right" data-aos-delay="200">
+                                    <label for="contact-phone" class="block text-gray-700 font-medium mb-2">Phone Number *</label>
+                                    <input id="contact-phone" name="phone" type="tel" placeholder="+91 9967565422" required
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent form-input transition duration-300" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Specifications -->
+                        <div class="border-b border-gray-200 pb-6">
+                            <h3 class="text-lg font-bold text-gray-900 mb-4">Project Specifications</h3>
+                            <div class="space-y-4">
+                                <div data-aos="fade-right" data-aos-delay="250">
+                                    <label for="service-type" class="block text-gray-700 font-medium mb-2">Service Type *</label>
+                                    <select id="service-type" name="service_type" required
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent form-input transition duration-300">
+                                        <option value="">Select a service</option>
+                                        <option value="metal_printing">Metal Printing</option>
+                                        <option value="screen_printing">Screen Printing</option>
+                                        <option value="both">Both Services</option>
+                                        <option value="consultation">Consultation</option>
+                                    </select>
+                                </div>
+
+                                <div data-aos="fade-right" data-aos-delay="300">
+                                    <label for="material-type" class="block text-gray-700 font-medium mb-2">Material Type</label>
+                                    <select id="material-type" name="material_type"
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent form-input transition duration-300">
+                                        <option value="">Select material</option>
+                                        <option value="aluminum">Aluminum</option>
+                                        <option value="steel">Steel</option>
+                                        <option value="stainless_steel">Stainless Steel</option>
+                                        <option value="brass">Brass</option>
+                                        <option value="copper">Copper</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div data-aos="fade-right" data-aos-delay="350">
+                                    <label for="project-size" class="block text-gray-700 font-medium mb-2">Project Size</label>
+                                    <select id="project-size" name="project_size"
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent form-input transition duration-300">
+                                        <option value="">Select size category</option>
+                                        <option value="small">Small (Under 10 units)</option>
+                                        <option value="medium">Medium (10-50 units)</option>
+                                        <option value="large">Large (50-200 units)</option>
+                                        <option value="bulk">Bulk (200+ units)</option>
+                                        <option value="custom">Custom Quote Needed</option>
+                                    </select>
+                                </div>
+
+                                <div data-aos="fade-right" data-aos-delay="400">
+                                    <label class="block text-gray-700 font-medium mb-2">Quantity</label>
+                                    <div class="flex items-center space-x-4">
+                                        <button type="button" class="quantity-btn w-10 h-10 bg-gray-800 text-white rounded-lg flex items-center justify-center font-bold" onclick="updateQuantity(-1)">-</button>
+                                        <input type="number" id="quantity" name="quantity" value="1" min="1" 
+                                               class="w-20 px-3 py-2 border border-gray-300 rounded-lg text-center focus:ring-2 focus:ring-gray-800 focus:border-transparent">
+                                        <button type="button" class="quantity-btn w-10 h-10 bg-gray-800 text-white rounded-lg flex items-center justify-center font-bold" onclick="updateQuantity(1)">+</button>
+                                        <span class="text-gray-600 text-sm">units</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Details -->
+                        <div data-aos="fade-right" data-aos-delay="450">
+                            <label for="project-details" class="block text-gray-700 font-medium mb-2">Project Details & Requirements *</label>
+                            <textarea id="project-details" name="project_details" rows="4" placeholder="Please describe your project in detail, including dimensions, colors, deadlines, and any special requirements..." required
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent form-input transition duration-300"></textarea>
+                        </div>
+
+                        <div data-aos="fade-right" data-aos-delay="500">
+                            <label for="deadline" class="block text-gray-700 font-medium mb-2">Desired Deadline</label>
+                            <input id="deadline" name="deadline" type="date" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent form-input transition duration-300">
+                        </div>
+
+                        <button type="submit" title="Get Quote" 
+                                class="w-full bg-gray-800 hover:bg-gray-900 text-white py-4 rounded-lg font-bold text-lg transition duration-300 transform hover:scale-105 shadow-lg hover-lift"
+                                data-aos="fade-up" data-aos-delay="550">
+                            REQUEST QUOTE
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Order Summary & Contact Info -->
+                <div class="space-y-8">
+
+                    <!-- Order Summary -->
+                    <div class="bg-white rounded-2xl p-6 border-2 border-gray-200 hover-lift order-summary" data-aos="fade-left">
+                        <h2 class="text-2xl font-black text-gray-900 mb-4">Quote Summary</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-600">Service Type:</span>
+                                <span class="font-medium text-gray-900" id="summary-service">Not selected</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-600">Material:</span>
+                                <span class="font-medium text-gray-900" id="summary-material">Not selected</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-600">Project Size:</span>
+                                <span class="font-medium text-gray-900" id="summary-size">Not selected</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-600">Quantity:</span>
+                                <span class="font-medium text-gray-900" id="summary-quantity">1 unit</span>
+                            </div>
+                            <div class="border-t border-gray-200 pt-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-lg font-bold text-gray-900">Estimated Timeline:</span>
+                                    <span class="text-lg font-bold text-gray-900" id="summary-timeline">3-5 days</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div data-aos="fade-left">
+                        <h2 class="text-2xl font-black text-gray-900 mb-6">Contact Information</h2>
+                        <div class="space-y-6">
+
+                            <div class="contact-item flex items-start p-4 rounded-lg hover:bg-gray-50 transition duration-300 cursor-pointer">
+                                <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center mr-4 mt-1 contact-icon">
+                                    <span class="text-white text-sm">📍</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900">Address</h3>
+                                    <p class="text-gray-600">Your Business Address Here</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item flex items-start p-4 rounded-lg hover:bg-gray-50 transition duration-300 cursor-pointer pulse-phone">
+                                <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center mr-4 mt-1 contact-icon">
+                                    <span class="text-white text-sm">📞</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900">Phone</h3>
+                                    <p class="text-gray-600 font-medium">9967565422</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item flex items-start p-4 rounded-lg hover:bg-gray-50 transition duration-300 cursor-pointer">
+                                <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center mr-4 mt-1 contact-icon">
+                                    <span class="text-white text-sm">✉️</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900">Email</h3>
+                                    <p class="text-gray-600">jivdaniiprintingprocess@gmail.com</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Business Hours -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border-2 border-gray-200 hover-lift" data-aos="fade-left" data-aos-delay="200">
+                        <h3 class="text-xl font-black text-gray-900 mb-4">Business Hours</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-2 rounded hover:bg-white transition duration-300">
+                                <span class="text-gray-600">Monday - Friday</span>
+                                <span class="font-medium text-gray-900 bg-gray-200 px-3 py-1 rounded-full text-sm">9:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 rounded hover:bg-white transition duration-300">
+                                <span class="text-gray-600">Saturday</span>
+                                <span class="font-medium text-gray-900 bg-gray-200 px-3 py-1 rounded-full text-sm">10:00 AM - 4:00 PM</span>
+                            </div>
+                            <div class="flex justify-between items-center p-2 rounded hover:bg-white transition duration-300">
+                                <span class="text-gray-600">Sunday</span>
+                                <span class="font-medium text-gray-900 bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Response -->
+                    <div class="bg-gray-800 text-white rounded-2xl p-6 hover-lift" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-xl font-black mb-3">Quick Quote Response</h3>
+                        <p class="text-gray-300 mb-4">We provide detailed quotes within 24 hours of receiving your project details.</p>
+                        <div class="flex items-center text-sm text-gray-300">
+                            <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                            Available for quotes
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-black text-center text-gray-900 mb-12" data-aos="fade-up">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl p-6 shadow-lg hover-lift transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="font-bold text-gray-900 mb-2">How soon will I receive my quote?</h3>
+                    <p class="text-gray-600">We provide detailed quotes within 24 hours of receiving complete project specifications.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg hover-lift transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-bold text-gray-900 mb-2">Do you offer volume discounts?</h3>
+                    <p class="text-gray-600">Yes! We offer competitive pricing for bulk orders. The discount increases with order quantity.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg hover-lift transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="font-bold text-gray-900 mb-2">What's included in the quote?</h3>
+                    <p class="text-gray-600">Our quotes include material costs, printing, finishing, and delivery. No hidden fees.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div data-aos="fade-up">
+                    <h3 class="text-xl font-black mb-4">JIVDANII</h3>
+                    <p class="text-gray-400">Precision metal printing for industrial and commercial applications.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block text-gray-400 hover:text-white transition duration-300">Home</a>
+                        <a href="about.html" class="block text-gray-400 hover:text-white transition duration-300">About</a>
+                        <a href="contact.html" class="block text-gray-400 hover:text-white transition duration-300">Get Quote</a>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p>📞 9967565422</p>
+                        <p>✉️ jivdaniiprintingprocess@gmail.com</p>
+                        <p>📍 Add your address here...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400" data-aos="fade-up">
+                <p>&copy; 2024 JIVDANII PRINTING PROCESS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Quantity Control
+        function updateQuantity(change) {
+            const quantityInput = document.getElementById('quantity');
+            let currentQuantity = parseInt(quantityInput.value) || 1;
+            currentQuantity = Math.max(1, currentQuantity + change);
+            quantityInput.value = currentQuantity;
+            updateOrderSummary();
+        }
+
+        // Update Order Summary in Real-time
+        function updateOrderSummary() {
+            const serviceSelect = document.getElementById('service-type');
+            const materialSelect = document.getElementById('material-type');
+            const sizeSelect = document.getElementById('project-size');
+            const quantityInput = document.getElementById('quantity');
+            
+            document.getElementById('summary-service').textContent = serviceSelect.value ? serviceSelect.options[serviceSelect.selectedIndex].text : 'Not selected';
+            document.getElementById('summary-material').textContent = materialSelect.value ? materialSelect.options[materialSelect.selectedIndex].text : 'Not selected';
+            document.getElementById('summary-size').textContent = sizeSelect.value ? sizeSelect.options[sizeSelect.selectedIndex].text : 'Not selected';
+            document.getElementById('summary-quantity').textContent = `${quantityInput.value} unit${quantityInput.value > 1 ? 's' : ''}`;
+            
+            // Update estimated timeline based on size
+            const timelineMap = {
+                'small': '3-5 days',
+                'medium': '5-7 days',
+                'large': '7-10 days',
+                'bulk': '10-14 days',
+                'custom': 'Contact for timeline'
+            };
+            const timeline = timelineMap[sizeSelect.value] || '3-5 days';
+            document.getElementById('summary-timeline').textContent = timeline;
+        }
+
+        // Add event listeners for real-time updates
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update summary when form changes
+            const formElements = ['service-type', 'material-type', 'project-size', 'quantity'];
+            formElements.forEach(id => {
+                document.getElementById(id).addEventListener('change', updateOrderSummary);
+                document.getElementById(id).addEventListener('input', updateOrderSummary);
+            });
+
+            // Initialize summary
+            updateOrderSummary();
+        });
+
+        // Form submission with backend integration
+        document.getElementById('orderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+
+            try {
+                // Show loading state
+                button.textContent = 'PROCESSING...';
+                button.disabled = true;
+
+                // Use localhost for development
+                const API_BASE = 'http://localhost:3000/api';
+
+                const response = await fetch(`${API_BASE}/contact/submit`, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Success state
+                    button.textContent = 'QUOTE REQUESTED! ✓';
+                    button.style.background = '#10B981';
+                    
+                    // Show success message
+                    showMessage('✅ Quote request submitted successfully! We will contact you within 24 hours.', 'success');
+                    
+                    // Reset form after 3 seconds
+                    setTimeout(() => {
+                        this.reset();
+                        button.textContent = originalText;
+                        button.disabled = false;
+                        button.style.background = '';
+                        updateOrderSummary(); // Reset summary
+                    }, 3000);
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                console.error('Quote request error:', error);
+                button.textContent = 'FAILED - TRY AGAIN';
+                button.style.background = '#EF4444';
+                showMessage('❌ Failed to submit quote request. Please try again.', 'error');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    button.style.background = '';
+                }, 3000);
+            }
+        });
+
+        function showMessage(text, type) {
+            // Remove existing messages
+            const existingMessage = document.querySelector('.form-message');
+            if (existingMessage) existingMessage.remove();
+
+            // Create new message
+            const message = document.createElement('div');
+            message.className = `form-message mt-4 p-4 rounded-lg ${
+                type === 'success' ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-red-100 text-red-800 border border-red-300'
+            }`;
+            message.textContent = text;
+            
+            document.getElementById('orderForm').appendChild(message);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                message.remove();
+            }, 5000);
+        }
+
+        // Add click effects to contact items
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

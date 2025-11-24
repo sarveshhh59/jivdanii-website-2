@@ -46,6 +46,9 @@ const __dirname = dirname(__filename);
 // Serve static files from the root directory
 app.use(express.static(__dirname));
 
+// FIX: Ignore favicon requests to prevent errors
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+
 // Email service function
 const sendQuoteNotification = async (quoteData) => {
   try {

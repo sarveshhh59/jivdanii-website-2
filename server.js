@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { Resend } from "resend";
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
 dotenv.config();
 
@@ -36,7 +38,13 @@ const db = {
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
+
+// Serve static files in production
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Serve static files from the root directory
+app.use(express.static(__dirname));
 
 // Email service function
 const sendQuoteNotification = async (quoteData) => {
@@ -186,9 +194,36 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+// Serve HTML files for all routes (SPA behavior for Render)
+app.get("*", (req, res) => {
+  const path = join(__dirname, req.path);
+  
+  // If it's an API route, skip
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: 'API route not found' });
+  }
+  
+  // If it's a file that exists, serve it
+  if (req.path.includes('.') && !req.path.endsWith('/')) {
+    return res.sendFile(path);
+  }
+  
+  // Otherwise serve the main HTML files
+  if (req.path === '/about.html' || req.path === '/about') {
+    return res.sendFile(join(__dirname, 'about.html'));
+  }
+  if (req.path === '/contact.html' || req.path === '/contact') {
+    return res.sendFile(join(__dirname, 'contact.html'));
+  }
+  
+  // Default to index.html
+  res.sendFile(join(__dirname, 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
   console.log(`📧 Email notifications: ${process.env.RESEND_API_KEY ? 'READY' : 'NOT CONFIGURED'}`);
   console.log(`💾 Database: ACTIVE (in-memory)`);
+  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
 });
